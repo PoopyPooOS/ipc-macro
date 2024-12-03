@@ -1,12 +1,12 @@
 #[macro_export]
 macro_rules! define_commands {
-    ($($command:ident($($arg:ty),*) -> $ret:ty ;)*) => {
-        #[derive(Debug, Deserialize, Serialize)]
+    ($($command:ident($($arg:ty),*) -> $ret:ty;)*) => {
+        #[derive(Debug, serde::Deserialize, serde::Serialize)]
         pub enum Command {
             $($command($($arg),*)),*
         }
 
-        #[derive(Debug, Deserialize, Serialize)]
+        #[derive(Debug, serde::Deserialize, serde::Serialize)]
         pub enum Response {
             $(
                 $command(
